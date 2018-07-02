@@ -1,0 +1,64 @@
+<nb-card>
+  <nb-card-header>
+    Application Redemption Tool
+    <dx-button class="pull-right" text="Reset Form" (click)="resetForm()"></dx-button>
+  </nb-card-header>
+  <nb-card-body>
+    <form (submit)="onFormSubmit($event)">
+      <dx-form id="form" [colCount]="2" [(formData)]="employee"
+         (onFieldDataChanged)="form_fieldDataChanged($event)"
+      [showValidationSummary]="true" validationGroup="customerData">
+
+        <dxi-item dataField="FlowType" editorType="dxSelectBox" [editorOptions]="{ items: flowtypes, value: flowtype }">
+          <dxi-validation-rule type="required" message="Cashflow Type is required"></dxi-validation-rule>
+        </dxi-item>
+
+        <dxi-item dataField="PortfolioCode" [disabled]="PortfolioCodeDisabled" editorType="dxSelectBox" [editorOptions]="{dataSource: source, displayExpr:'value', valueExpr:'value'}">
+          <dxi-validation-rule type="required" message="Position is required"></dxi-validation-rule>
+        </dxi-item>
+
+        <dxi-item dataField="Client" [disabled]="ClientDisabled" editorType="dxSelectBox" [editorOptions]="{ items: clients, displayExpr:'name', valueExpr:'name' }">
+          <dxi-validation-rule type="required" message="Client is  is required"></dxi-validation-rule>
+        </dxi-item>
+
+        <dxi-item dataField="Currency" editorType="dxSelectBox" [editorOptions]="{ items: currencies, value: 'AUD' }">
+          <dxi-validation-rule type="required" message="Currency is required"></dxi-validation-rule>
+        </dxi-item>
+
+        <dxi-item dataField="Account" editorType="dxSelectBox" [editorOptions]="{ items: accounts, value: 'CASH' }">
+          <dxi-validation-rule type="required" message="Position is required"></dxi-validation-rule>
+        </dxi-item>
+
+        <dxi-item dataField="Amount" editorType="dxNumberBox" [editorOptions]="{value: 0.00,  min: 0.00,  format: '$ #,##0.##'}">
+          <dxi-validation-rule type="required" message="Amount greater than 0 is required"></dxi-validation-rule>
+        </dxi-item>
+
+        <dxi-item #tradedate name="tradedate" [disabled]="true" dataField="TradeDate" editorType="dxDateBox" [editorOptions]="{value: tradeDate, width: '100%',  displayFormat: 'dd MMM yyy'}">
+        </dxi-item>
+        <dxi-item name="trade-date">
+          <dxo-label text="Override Trade Date"></dxo-label>
+          <div *dxTemplate>
+            <dx-check-box [(value)]="!tradedate.disabled">
+            </dx-check-box>
+          </div>
+        </dxi-item>
+
+        <dxi-item #settledate name="settledate" [disabled]="true" dataField="SettleDate" editorType="dxDateBox" [editorOptions]="{value: settleDate, width: '100%', displayFormat: 'dd MMM yyy'}">
+        </dxi-item>
+        <dxi-item name="settle-date">
+          <dxo-label text="Override Settle Date"></dxo-label>
+          <div *dxTemplate>
+            <dx-check-box [(value)]="!settledate.disabled">
+            </dx-check-box>
+          </div>
+        </dxi-item>
+      </dx-form>
+      <br>
+      
+      <dx-button class="pull-right" text="Submit data" validationGroup="customerData" [useSubmitBehavior]="true"></dx-button>
+      
+
+    </form>
+
+  </nb-card-body>
+</nb-card>

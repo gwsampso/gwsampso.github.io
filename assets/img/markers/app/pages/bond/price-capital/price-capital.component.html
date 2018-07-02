@@ -1,0 +1,31 @@
+<nb-card>
+  <nb-card-header>
+    {{cardheader}}
+  </nb-card-header>
+  <nb-card-body>
+
+    <dx-data-grid id="gridContainer" [dataSource]="dataSourceRefRatePrice" [editing]="editing" [remoteOperations]="true" allowColumnResizing="true"
+      [columnAutoWidth]="true" (onContentReady)="onContentReady($event)" (onCellPrepared)="onCellPrepared($event)"
+       (onToolbarPreparing)="onToolbarPreparing($event)">
+      <dxo-load-panel [enabled]="true"></dxo-load-panel>
+      <dxo-column-chooser [enabled]="true" mode="dragAndDrop"></dxo-column-chooser>
+      <dxo-state-storing [enabled]="true" type="localStorage" storageKey="{{key}}"></dxo-state-storing>
+      <dxo-column-fixing [enabled]="true"></dxo-column-fixing>    
+      <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-export [enabled]="true" fileName="{{key}}" [allowExportSelectedData]="true"></dxo-export>
+
+<dxi-column dataField="isin" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="isin is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="valuedate" dataType="date" format="dd-MM-yyyy" [visible]="true"><dxi-validation-rule type="required" message="valuedate is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="capitalprice" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="capitalprice is required"></dxi-validation-rule></dxi-column>
+
+      
+
+      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]" [showNavigationButtons]="true">
+      </dxo-pager>
+      <dxo-paging [pageSize]="10" [pageIndex]="0"></dxo-paging>
+      <dxo-editing [allowUpdating]="true" [allowDeleting]="true" [allowAdding]="true">
+      </dxo-editing>
+    </dx-data-grid>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,37 @@
+<nb-card>
+  <nb-card-header>
+    Money Master
+  </nb-card-header>
+  <nb-card-body>
+
+    <dx-data-grid id="gridContainer" [dataSource]="dataSourceMoneyMaster" [editing]="editing" [remoteOperations]="true" allowColumnResizing="true"
+      [columnAutoWidth]="true" (onContentReady)="onContentReady($event)" (onCellPrepared)="onCellPrepared($event)"
+       (onToolbarPreparing)="onToolbarPreparing($event)">
+      <dxo-load-panel [enabled]="true"></dxo-load-panel>
+      <dxo-column-chooser [enabled]="true" mode="dragAndDrop"></dxo-column-chooser>
+      <dxo-state-storing [enabled]="true" type="localStorage" storageKey="money-master"></dxo-state-storing>
+      <dxo-column-fixing [enabled]="true"></dxo-column-fixing>    
+      <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-export [enabled]="true" fileName="MoneyMaster" [allowExportSelectedData]="true"></dxo-export>
+      <dxo-selection mode="multiple"></dxo-selection>
+
+
+      <dxi-column dataField="moneyId" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="moneyId is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="custodianId" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="custodianId is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="currency" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="currency is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="issuerCode" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="issuerCode is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="drawer" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="drawer is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="description" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="description is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="type" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="type is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="maturityDate"  dataType="date" format="dd-MMM-yyyy" [visible]="true"><dxi-validation-rule type="required" message="maturityDate is required"></dxi-validation-rule></dxi-column>
+
+
+      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]" [showNavigationButtons]="true">
+      </dxo-pager>
+      <dxo-paging [pageSize]="10" [pageIndex]="0"></dxo-paging>
+      <dxo-editing [allowUpdating]="true" [allowDeleting]="true" [allowAdding]="true">
+      </dxo-editing>
+    </dx-data-grid>
+  </nb-card-body>
+</nb-card>

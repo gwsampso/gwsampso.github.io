@@ -1,0 +1,62 @@
+<nb-card>
+  <nb-card-header>
+    Corporate Action Tool
+    <dx-button class="pull-right" text="Reset Tool" (click)="resetForm()"></dx-button>
+  </nb-card-header>
+  <nb-card-body>
+    <div style="height: 280px; width: 100%">
+      <dx-data-grid id="gridContainer" style="height: 100%" [dataSource]="dataSourceActions" 
+       keyExpr="Identifier" [hoverStateEnabled]="true" [(selectedRowKeys)]="selectedRows"
+        [twoWayBindingEnabled]='true'>
+        <dxo-editing mode="row" [allowAdding]="true" [allowDeleting]="true" [allowUpdating]="true">
+        </dxo-editing>
+        <dxo-selection mode="single"></dxo-selection>
+        <dxi-column dataField="SecurityType">
+          <dxo-lookup [dataSource]="securitytypes" displayExpr="name" valueExpr="code">
+          </dxo-lookup>
+        </dxi-column>
+
+        <dxi-column dataField="Identifier" headerCellTemplate="titleHeaderTemplate"></dxi-column>
+        <div *dxTemplate="let info of 'titleHeaderTemplate'">
+          <div class="label" id="product1" (mouseenter)="toggleDefault()" (mouseleave)="toggleDefault()">Identifier
+            <i class="far fa-question-circle"></i>
+          </div>
+          <dx-tooltip target="#product1" [(visible)]="defaultVisible">
+            <div *dxTemplate="let data = data of 'content'">
+              Equity: SEDOL Bond: ISIN
+            </div>
+          </dx-tooltip>
+        </div>
+
+        <dxi-column dataField="TradeDate" format="dd-MMM-yyyy" [showEditorAlways]="true" dataType="date"></dxi-column>
+        <dxi-column dataField="SettleDate" format="dd-MMM-yyyy" [showEditorAlways]="true" dataType="date"></dxi-column>
+
+        <dxi-column dataField="Ratio" dataType="number" format="#,##0.##"></dxi-column>
+        <dxi-column dataField="Price" dataType="number" format="#,##0.##"></dxi-column>
+
+      </dx-data-grid>
+    </div>
+    <br>
+    <dx-button class="pull-right" text="Create Orders" (click)="createOrders()"></dx-button>
+  </nb-card-body>
+
+  <nb-card-body>
+    <div style="height: 280px; width: 100%">
+      <dx-data-grid id="gridContainer" style="height: 100%" [dataSource]="dataSourceTrades" [twoWayBindingEnabled]='true'  (onEditorPreparing)="onEditorPreparing($event)">
+        <dxo-selection mode="multiple"></dxo-selection>
+                <dxo-editing mode="cell" [allowUpdating]="true">
+                </dxo-editing>
+        <dxi-column  readOnly="true" dataField="PortfolioCode"></dxi-column>
+        <dxi-column allowEditing="false" dataField="SecurityType"></dxi-column>  
+        <dxi-column allowEditing="false" dataField="Identifier"></dxi-column>      
+        <dxi-column allowEditing="false" dataField="TradeDate" format="dd-MMM-yyyy" dataType="date"></dxi-column>
+        <dxi-column allowEditing="false" dataField="SettleDate" format="dd-MMM-yyyy" dataType="date"></dxi-column>
+        <dxi-column dataField="Qantity" dataType="number" format="#,##0.##"></dxi-column>
+        <dxi-column allowEditing="false" dataField="Price" dataType="number" format="#,##0.##"></dxi-column>  
+      </dx-data-grid>
+    </div>
+    <br>
+    <dx-button class="pull-right" text="Send Trades" (click)="sendTrades()"></dx-button>
+  </nb-card-body>
+
+</nb-card>

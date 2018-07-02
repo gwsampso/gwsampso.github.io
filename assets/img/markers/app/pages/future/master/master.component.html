@@ -1,0 +1,56 @@
+<nb-card>
+  <nb-card-header>
+    {{cardheader}}
+  </nb-card-header>
+  <nb-card-body>
+
+    <dx-data-grid id="gridContainer" [dataSource]="dataSourceEquityMaster" [editing]="editing" [remoteOperations]="true" allowColumnResizing="true"
+      [columnAutoWidth]="true" (onContentReady)="onContentReady($event)" (onCellPrepared)="onCellPrepared($event)"
+       (onToolbarPreparing)="onToolbarPreparing($event)">
+      <dxo-load-panel [enabled]="true"></dxo-load-panel>
+      <dxo-column-chooser [enabled]="true" mode="dragAndDrop"></dxo-column-chooser>
+      <dxo-state-storing [enabled]="true" type="localStorage" storageKey="{{key}}" ></dxo-state-storing>
+      <dxo-column-fixing [enabled]="true"></dxo-column-fixing>    
+      <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-export [enabled]="true" fileName="{{key}}" [allowExportSelectedData]="true"></dxo-export>
+
+
+      <dxi-column dataField="contractcode" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="contractCode is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="name" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="name is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="exchange" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="exchange is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="notional" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="notional is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="contractsize" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="contractSize is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="valueofonepoint" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="valueOfOnePoint is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="ticksize" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="tickSize is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="tickvalue" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="tickValue is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="pricemultiple" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="priceMultiple is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="cashsettlement" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="cashSettlement is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="firsttrade" dataType="date" format="dd-MMM-yyyy" [visible]="true"><dxi-validation-rule type="required" message="firstTrade is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="lasttrade"  dataType="date" format="dd-MMM-yyyy"[visible]="true"><dxi-validation-rule type="required" message="lastTrade is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="firstnotice" dataType="date" format="dd-MMM-yyyy" [visible]="true"><dxi-validation-rule type="required" message="firstNotice is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="marginsize" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="marginSize is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="currency" caption="Currency">
+        <dxo-lookup [dataSource]="currencies" displayExpr="code" valueExpr="code">
+        </dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="exchangecode" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="exchangeCode is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="category" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="category is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="period" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="period is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="couponrate" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="couponRate is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="couponfrequency" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="couponFrequency is required"></dxi-validation-rule></dxi-column>
+      <dxi-column dataField="calculationtype" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="calculationType is required"></dxi-validation-rule></dxi-column>
+
+
+
+
+
+
+      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]" [showNavigationButtons]="true">
+      </dxo-pager>
+      <dxo-paging [pageSize]="10" [pageIndex]="0"></dxo-paging>
+      <dxo-editing [allowUpdating]="true" [allowDeleting]="true" [allowAdding]="true">
+      </dxo-editing>
+    </dx-data-grid>
+  </nb-card-body>
+</nb-card>

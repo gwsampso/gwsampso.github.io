@@ -1,0 +1,54 @@
+<div class="long-title">
+  <h3>Fx Planner</h3>
+</div>
+<div class="widgets" id="fxplanner">
+  <div>
+    <div style="height: 280px; width: 100%">
+      <dx-data-grid style="height: 100%;" id="gridContainer" [dataSource]="cash" allowColumnResizing="true" [columnAutoWidth]=true
+       (onContentReady)="onContentReady($event)"
+        [rowAlternationEnabled]=true [columns]="customcols"
+         (onToolbarPreparing)="onToolbarPreparing($event)">
+
+              <!--<div *dxTemplate="let data of 'totalGroupCount'">
+              </div>-->
+    
+     <div *dxTemplate="let data of 'totalGroupCount'">
+              <dx-select-box [dataSource]="products" [(selectedItem)]="myPortfolioCode" width="300px" [value]="1" placeholder="Select Portfolio Code" showClearButton="true"
+                displayExpr="text" valueExpr="value">
+                <div *dxTemplate="let data of 'item'" class="custom-item">
+                  <div class='product-name'>{{data.value}} - {{data.text}}</div>
+                </div>
+              </dx-select-box>
+      </div>
+
+      </dx-data-grid>
+    </div>
+    <br>
+    <div style="height: 280px; width: 100%">
+      <dx-data-grid style="height: 100%" id="gridContainer" allowColumnResizing="true" [columnAutoWidth]=true [rowAlternationEnabled]=true
+        [dataSource]="cash2" [columns]="customcols2" [editing]="editing" 
+        (onEditorPreparing)="EditCell($event)"
+        (onRowUpdating)="onRowUpdating($event)"
+        (onCellPrepared)="LogEdits($event)">
+      </dx-data-grid>
+    </div>
+    <br>
+    <div style="height: 280px; width: 100%">
+      <dx-data-grid id="gridContainer" [dataSource]="fxTradeList" [allowColumnReordering]="true" [allowColumnResizing]="true" [columnAutoWidth]="true">
+        <dxi-column dataField="Type"></dxi-column>
+        <dxi-column dataField="Side"></dxi-column>
+        <dxi-column dataField="GivenCCY"></dxi-column>
+        <dxi-column dataField="GivenAmount"></dxi-column>
+        <dxi-column dataField="SettleCCY" ></dxi-column>
+        <dxi-column dataField="SettleAmount"></dxi-column>
+        <dxi-column dataField="ValueDate"></dxi-column>
+        <dxi-column caption="Far Date" dataField="HedgeDate"></dxi-column>
+        <dxi-column dataField="PortfolioCode"></dxi-column>
+      </dx-data-grid>
+    </div>
+  </div>
+</div>
+
+<dx-load-panel #loadPanel shadingColor="rgba(0,0,0,0.4)" [position]="{ of: '#fxplanner' }" [(visible)]="loadingVisible" [showIndicator]="true"
+  [showPane]="true" [shading]="true" [closeOnOutsideClick]="false">
+</dx-load-panel>

@@ -1,0 +1,69 @@
+<nb-card size="large">
+  <div class="chart-container">
+    <div>
+      <div>
+        <div class="">
+          <div class="table-header">
+            <div>Portfolio Performance</div>
+            <div class="subtitle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div style="width: 100%">-->
+      <dx-data-grid style="height: 90%" [dataSource]="gridData" [showRowLines]="true" allowColumnResizing="true" [columnAutoWidth]=true  (onContentReady)="onContentReady($event)"
+         (onToolbarPreparing)="onToolbarPreparing($event)"
+          (onCellPrepared)="LogEdits($event)"> 
+        <dxo-sorting mode="none"></dxo-sorting>
+        
+        <dxo-load-panel [enabled]="true"></dxo-load-panel>
+        <dxi-column dataField="PortfolioCode"></dxi-column>
+        <dxi-column dataField="IndexCode"></dxi-column>
+        <dxi-column caption="Month">
+          <dxi-column dataField="Month1" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="MonthBM1" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+        <dxi-column caption="3 Month">
+          <dxi-column dataField="Month3" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="MonthBM3" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+        <dxi-column caption="6 Month">
+          <dxi-column dataField="Month6" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="MonthBM6" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+        <dxi-column caption="YTD">
+          <dxi-column dataField="YTD" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="YTDBM" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+        <dxi-column caption="1 Year">
+          <dxi-column dataField="Year1" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="YearBM1" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+        <dxi-column caption="2 Year">
+          <dxi-column dataField="Years2" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="YearsBM2" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+        <dxi-column caption="3 Year">
+          <dxi-column dataField="Years3" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="YearsBM3" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+        <dxi-column caption="5 Year">
+          <dxi-column dataField="Years5" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="YearsBM5" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+        <dxi-column caption="10 Year">
+          <dxi-column dataField="Years10" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="YearsBM10" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+        <dxi-column caption="Inception Ann">
+          <dxi-column dataField="AnnInception" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="AnnInceptionBM" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+        <dxi-column caption="Inception Cum">
+          <dxi-column dataField="CumInception" caption="Port" dataType="number" format="#0.00%"></dxi-column>
+          <dxi-column dataField="CumInceptionBM" caption="BM" dataType="number" format="#0.00%"></dxi-column>
+        </dxi-column>
+      </dx-data-grid>
+    <!--</div>-->
+  </div>
+</nb-card>

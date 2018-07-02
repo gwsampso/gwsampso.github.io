@@ -1,0 +1,15 @@
+export const clients = [ 
+  {name: 'Ibbotson'},
+  {name: 'Pitcher Partners'},
+  {name: 'Omega Staff'}, 
+  {name: 'SSFS'}, 
+  {name: 'Telstra'}, 
+  {name: 'LGSS'}, 
+  {name: 'Sonen'}, 
+  {name: 'PSTA'}, 
+  {name: 'REI'}, 
+  {name: 'Suncorp'}, 
+  {name: 'UFS'}, 
+  {name: 'Betashares'}, 
+  {name: 'AZ Sestante Ltd'}, 
+];

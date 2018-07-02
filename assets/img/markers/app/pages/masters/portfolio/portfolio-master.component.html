@@ -1,0 +1,60 @@
+<nb-card>
+  <nb-card-header>
+    Portfolio Master
+  </nb-card-header>
+  <nb-card-body>
+
+    <dx-data-grid id="gridContainer" [dataSource]="dataSourcePortfolioMaster" [editing]="editing" [remoteOperations]="true" allowColumnResizing="true"
+      [columnAutoWidth]="true" (onContentReady)="onContentReady($event)" (onCellPrepared)="onCellPrepared($event)"
+       (onToolbarPreparing)="onToolbarPreparing($event)">
+      <dxo-load-panel [enabled]="true"></dxo-load-panel>
+      <dxo-column-chooser [enabled]="true" mode="dragAndDrop"></dxo-column-chooser>
+      <dxo-state-storing [enabled]="true" type="localStorage" storageKey="portfolio-master"></dxo-state-storing>
+      <dxo-column-fixing [enabled]="true"></dxo-column-fixing>    
+      <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-export [enabled]="true" fileName="PortfolioMaster" [allowExportSelectedData]="true"></dxo-export>
+      <dxo-selection mode="multiple"></dxo-selection>
+
+<dxi-column dataField="portfoliocode" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="portfolioCode is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="shortname" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="shortName is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="fullname" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="fullName is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="indexcode" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="indexCode is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="sectorclassification" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="fullName is required"></dxi-validation-rule></dxi-column>
+
+<dxi-column dataField="assetclass1" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="fullName is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="assetclass2" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="fullName is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="assetclass3" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="fullName is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="assetclass4" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="fullName is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="hedgeclass" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="fullName is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="style" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="fullName is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="structure" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="fullName is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="ishedged" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="fullName is required"></dxi-validation-rule></dxi-column>
+
+
+
+<dxi-column dataField="perfmethod" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="perfMethod is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="accruedoffset" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="accruedOffset is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="custodian" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="custodian is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="custodianCode" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="custodianCode is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="reconciliationCode" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="reconciliationCode is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="gtssLongName" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="gtssLongName is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="arsn" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="arsn is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="apircode" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="apircode is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="abn" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="abn is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="tfn" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="tfn is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="lei" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="lei is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="managementFee" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="managementFee is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="buySellSpread" dataType="number" [visible]="true"><dxi-validation-rule type="required" message="buySellSpread is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="launchDate" dataType="date" format="dd/MM/yyyy" [visible]="true"><dxi-validation-rule type="required" message="launchDate is required"></dxi-validation-rule></dxi-column>
+<dxi-column dataField="currency" dataType="string" [visible]="true"><dxi-validation-rule type="required" message="currency is required"></dxi-validation-rule></dxi-column>
+
+
+      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]" [showNavigationButtons]="true">
+      </dxo-pager>
+      <dxo-paging [pageSize]="10" [pageIndex]="0"></dxo-paging>
+      <dxo-editing [allowUpdating]="true" [allowDeleting]="true" [allowAdding]="true">
+      </dxo-editing>
+    </dx-data-grid>
+  </nb-card-body>
+</nb-card>

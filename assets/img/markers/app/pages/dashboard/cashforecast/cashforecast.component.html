@@ -1,0 +1,28 @@
+<nb-card size="large">
+  <div class="chart-container">
+    <div>
+      <div>
+        <div class="">
+          <div class="table-header">
+            <div>Cashforecast</div>
+            <div class="subtitle">Overdrafts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="tabs">
+      <dx-tabs #apiTabs [dataSource]="tabs" [selectedIndex]="0" (onItemClick)="selectTab($event)"></dx-tabs>
+      <div class="content dx-fieldset">
+        <dx-data-grid style="height: 80%;" [dataSource]="gridData" [showRowLines]="true" dx-item-alias="ID"
+         (onCellPrepared)="LogEdits($event)">
+          <dxo-sorting mode="none"></dxo-sorting>
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxi-column dataField="code" [width]="90"></dxi-column>
+          <dxi-column dataField="ccy"></dxi-column>
+          <dxi-column dataField="amount" dataType="number" format="#,###.00" ></dxi-column>
+        </dx-data-grid>
+      </div>
+    </div>
+  </div>
+</nb-card>
+

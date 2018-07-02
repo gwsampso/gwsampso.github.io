@@ -1,0 +1,30 @@
+  export interface PortfolioList {
+    PortfolioCode: string;
+    ShortName: string;
+    FullName: string;
+    IndexCode: string;
+    PerfMethod: string;
+    AssetClass1: string;
+    AssetClass2: string;
+    AssetClass3: string;
+    AssetClass4: string;
+    HedgeClass: string;
+    Style: string;
+    Structure: string;
+    Status: string;
+    AccruedOffset: string;
+    Custodian: string;
+    CustodianCode: string;
+    ReconciliationCode: string;
+    GtssLongName: string;
+    ARSN: string;
+    APIRCode: string;
+    ABN: string;
+    TFN: string;
+    LEI: string;
+    ManagementFee?: number;
+    BuySellSpread?: number;
+    LaunchDate: string;
+    Currency: string;
+    LastUpdate: string;
+  }
